@@ -3,7 +3,7 @@ u=[1 0 0]';
 f = @(x) 1./x;
 
 %function [L, U] = Algo1(A,u,f)
-maxiter=10;
+maxiter=100;
 x=zeros(size(u,1),maxiter);
 
 alpha=zeros(1,maxiter);
