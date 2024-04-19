@@ -1,6 +1,11 @@
 A=[1 2 3; 3 0 3; 4 5 6];
 u=[1 0 0]';
+%n=10;
+%A=rand(n,n);
+%u=zeros(n,1);u(1)=1;
 f = @(x) 1./x;
+
+
 
 %function [L, U] = Algo1(A,u,f)
 maxiter=100;
