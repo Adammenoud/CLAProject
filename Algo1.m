@@ -30,12 +30,11 @@ for j=(3:maxiter+1)
     T = diag(alpha(3:j))+ diag(gamma(3:j-1),1)+diag(gamma(3:j-1),-1);
     ej=zeros(j-2,1);ej(end)=1;
 
-
-    %choose a or b ????
-    a = 1;
+    %choose a or b ???? Can be put outside of the loop
+    a = eigs(A,1);
 
     delta = (T-a*eye(j-2,j-2))\(gamma(j)^2*ej);    
-    phi=delta(j-2);
+    phi = delta(j-2);
     Ttilde = [T gamma(j)*ej ; gamma(j)*ej' phi ];
  
    % 5
@@ -52,7 +51,12 @@ for j=(3:maxiter+1)
 
 end
 
+% What is the output?! how L=U in the paper?!?!
 I(end)
+
+
+b=(A^-1);
+b(1,1)
 
 
 
