@@ -12,6 +12,7 @@ I=zeros(1,maxiter);
 x(:,2)=u/norm(u);
 
 for j=(3:maxiter+1)
+   % 1-3 and 9
     alpha(j)=x(:,j-1)'*A*x(:,j-1);
     rj=A*x(:,j-1)-alpha(j)*x(:,j-1)-gamma(j-1)*x(:,j-2);
     gamma(j)=norm(rj);
@@ -25,6 +26,7 @@ for j=(3:maxiter+1)
    % T = spdiags(gamma(3:j-1),-1,T);
    % end
 
+   % 4
     T = diag(alpha(3:j))+ diag(gamma(3:j-1),1)+diag(gamma(3:j-1),-1);
     ej=zeros(j-2,1);ej(end)=1;
 
@@ -36,14 +38,17 @@ for j=(3:maxiter+1)
     phi=delta(j-2);
     Ttilde = [T gamma(j)*ej ; gamma(j)*ej' phi ];
  
-
+   % 5
     [V, D] = eig(Ttilde);
     theta=diag(D);
-
     omega=V(1,:); %correct?
-    
+   
+   % 6 
     I(j) = sum(omega.^2*f(theta));
     
+   % 7
+
+   % 8
 
 end
 
