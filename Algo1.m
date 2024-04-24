@@ -2,6 +2,8 @@
 %u=[1 0 0]';
 n=100;
 A=generateSPDmatrix(n);
+%A=diag(rand(1,n));
+%A=eye(n);
 u=zeros(n,1);u(1)=1;
 
 f = @(x) 1./x;
