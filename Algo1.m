@@ -4,7 +4,7 @@ n=100;
 A=generateSPDmatrix(n);
 %A=diag(rand(1,n));
 %A=eye(n);
-u=zeros(n,1);u(1)=1;
+u=zeros(n,1);u(4)=1;
 
 f = @(x) 1./x;
 
@@ -14,8 +14,7 @@ f = @(x) 1./x;
 % What is the output?! how L=U in the paper?!?!
 
 
-b=(A^-1);
-re=b(1,1);
+re=u'*(A^-1)*u;
 
 fprintf('L = %f, U = %f, Real value = %f\n', L, U, re);
 
