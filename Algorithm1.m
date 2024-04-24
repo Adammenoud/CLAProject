@@ -1,15 +1,6 @@
-%A=[1 2 3; 3 0 3; 4 5 6];
-%u=[1 0 0]';
-n=100;
-A=generateSPDmatrix(n);
-u=zeros(n,1);u(1)=1;
-
-f = @(x) 1./x;
-tol=1e-5;
-
-
-%function [L, U] = Algo1(A,u,f,tol)
-maxiter=100;
+function [L, U] = Algorithm1(A,u,f)
+tol=1e-9;
+maxiter=10;
 x=zeros(size(u,1),maxiter);
 
 alpha=zeros(1,maxiter);
@@ -40,7 +31,7 @@ for j=(3:maxiter+1)
     T = diag(alpha(3:j))+ diag(gamma(3:j-1),1)+diag(gamma(3:j-1),-1);
     ej=zeros(j-2,1);ej(end)=1;
 
-    %choose a or b ???? Can be put outside of the loop
+
 warning('off', 'MATLAB:nearlySingularMatrix');
 
     delta = (T-a*eye(j-2,j-2))\(gamma(j)^2*ej);    
@@ -56,34 +47,26 @@ warning('on', 'MATLAB:nearlySingularMatrix');
    % 5
     [V, D] = eig(TtildeA);
     theta=diag(D);
-    omega=V(1,:); %correct?
+    omega=V(1,:); 
    
    % 6 
     IA(j) = sum(omega.^2*f(theta));
     
-   % 7
+   % 7 is this what is meant by repeat?
     [V, D] = eig(TtildeB);
     theta=diag(D);
-    omega=V(1,:); %correct?
+    omega=V(1,:); 
    
     IB(j) = sum(omega.^2*f(theta));
 
    % 8
-   U=norm(u)^2*IA(end);
-   L=norm(u)^2*IB(end);
+   U=norm(u)^2*IA(j);
+   L=norm(u)^2*IB(j);
 
-   if(abs(U-L)<tol)
-       disp('to')
+   if(abs(U-L)<tol && j>3)
+        break
+   end
 
 end
 
-% What is the output?! how L=U in the paper?!?!
-
-
-b=(A^-1);
-re=b(1,1);
-
-fprintf('L = %f, U = %f, Real value = %f\n', L, U, re);
-
-
-
+end
