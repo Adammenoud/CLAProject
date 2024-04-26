@@ -1,5 +1,5 @@
 function [L, U] = Algorithm1(A,u,f)
-tol=1e-3;
+tol=1e-9;
 maxiter=10;
 x=zeros(size(u,1),maxiter);
 

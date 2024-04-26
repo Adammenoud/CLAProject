@@ -1,13 +1,14 @@
 %A=[1 2 3; 3 0 3; 4 5 6];
 %u=[1 0 0]';
-n=2^10;
-A=generateSPDmatrix(n);
+n=4;
+%A=generateSPDmatrix(n);
+A=hilb(n);
 %A=diag(rand(1,n));
 %A=eye(n);
 
 
 f = @(x) 1./x;
-m=5;
+m=30;
 tic
 [Ip,Lp,Up] = Algorithm2(A,f,m);
 toc
