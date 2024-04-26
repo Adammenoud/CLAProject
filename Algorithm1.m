@@ -35,11 +35,11 @@ for j=(3:maxiter+1)
 warning('off', 'MATLAB:nearlySingularMatrix');
 
     delta = (T-a*eye(j-2,j-2))\(gamma(j)^2*ej);    
-    phi = delta(j-2);
+    phi = delta(j-2)+a;
     TtildeA = [T gamma(j)*ej ; gamma(j)*ej' phi ];
 
     delta = (T-b*eye(j-2,j-2))\(gamma(j)^2*ej);    
-    phi = delta(j-2);    
+    phi = delta(j-2)+b;    
     TtildeB = [T gamma(j)*ej ; gamma(j)*ej' phi ];
 
 warning('on', 'MATLAB:nearlySingularMatrix');
