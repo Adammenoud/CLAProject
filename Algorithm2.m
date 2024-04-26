@@ -8,13 +8,9 @@ Z=2*binornd(1, 0.5, n, m)-1;
 
 for j=1:m
 
-    [l,u]=Algorithm1(A,Z(:,j),f);
-    L(j)=l;U(j)=u;
-    if j>1
-        I(j)=(sum(L+U))/(2*j);
-    else
-        I(j)=(L(j)+U(j))/2;
-    end
+    [L(j),U(j)]=Algorithm1(A,Z(:,j),f);
+
+    I(j)=(sum(L+U))/(2*j);
 
     Lmin=min(Lmin,L(j));
     Umax=max(Umax,U(j));

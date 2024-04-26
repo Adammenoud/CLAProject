@@ -8,9 +8,9 @@ A=generateSPDmatrix(n);
 
 f = @(x) 1./x;
 m=30;
-
+tic
 [Ip,Lp,Up] = Algorithm2(A,f,m);
-
+toc
 
 interval= Lp<Ip && Ip<Up;
 

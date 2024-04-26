@@ -64,7 +64,8 @@ warning('on', 'MATLAB:nearlySingularMatrix');
    L=norm(u)^2*IB(j);
 
    if(abs(U-L)<tol && j>3)
-        break
+       %disp('yey')
+       break
    end
 
 end
