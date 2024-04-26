@@ -1,18 +1,6 @@
-%A=[1 2 3; 3 0 3; 4 5 6];
-%u=[1 0 0]';
-n=5;
-A=generateSPDmatrix(n);
-%A=diag(rand(1,n));
-%A=eye(n);
-u=zeros(n,1);u(1)=1;
-
-f = @(x) 1./x;
-
-
+function [Ip,Lp,Up] = Algorithm2(A,f,m)
 p=0.05;
-%function [Ip,Lp,Up] = Algo2(A,f,p)
 n=size(A,1);
-m=30;
 I=zeros(1,m);L=zeros(1,m);U=zeros(1,m);Lp=zeros(1,m);Up=zeros(1,m);
 Lmin=Inf;
 Umax=-Inf;
@@ -38,13 +26,7 @@ for j=1:m
 
 end
 
-
-
-interval= Lp(m)<I(m) && I(m)<Up(m);
-
-re=sum(diag(A^-1));
-
-fprintf('Ip = %f, Lp = %f, Up = %f, Real value = %f, Is\n', I(m), Lp(m), Up(m), re);
-
-
+Lp=Lp(m);
+Up=Up(m);
+Ip=I(m);
 
