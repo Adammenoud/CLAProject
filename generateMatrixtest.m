@@ -1,4 +1,4 @@
-LHF = generateLinearHeatFlowMatrix();
+LHF = generateLinearHeatFlowMatrix(30,0.2);
 
 cond(full(LHF))
 

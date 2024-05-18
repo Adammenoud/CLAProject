@@ -1,5 +1,5 @@
 tol=1e-4;
-maxiter=20;
+maxiter=200;
 
 Ex1=false;
 Ex2=true;
@@ -24,7 +24,7 @@ tic;
 t_Algo=toc;
 
 tic;
-re=u'*(A^-1)*u;
+re=u'*inv(A)*u;
 t_inv=toc;
 fprintf('Linear heat flow matrix i = %d :\n',i(k))
 fprintf('Inverse Method = %e, L = %e, U = %e,  Number of Iterations = %d, Time Algorithm = %f, Time Inverse Method = %f, U-L = %e\n', re, L, U, nbrIter, t_Algo, t_inv,U-L);
@@ -52,7 +52,7 @@ tic;
 t_Algo=toc;
 
 tic;
-re=u'*(A^-1)*u;
+re=u'*inv(A)*u;
 t_inv=toc;
 fprintf('Vicsek fractal Hamiltonian (VFH) matrix i = %d :\n',i(k))
 fprintf('Inverse Method = %e, L = %e, U = %e,  Number of Iterations = %d, Time Algorithm = %f, Time Inverse Method = %f, U-L = %e\n', re, L, U, nbrIter, t_Algo, t_inv,U-L);
