@@ -1,3 +1,4 @@
+%Peut-etre faux?!?!
 function Hk = generateVFHMatrix(k)
     % Base case for the recursion
     H1 = [-4 1 1 1 1; 

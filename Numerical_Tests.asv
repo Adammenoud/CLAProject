@@ -2,7 +2,7 @@ tol=1e-4;
 maxiter=200;
 
 Ex1=false;
-Ex2=false;
+Ex2=true;
 
 %Test Example 1
 if Ex1
@@ -36,17 +36,17 @@ end
 %Test Example 2
 if Ex2
 % Parameters
-k = [4 5]; 
+k = 4; 
+A = generateVFHMatrix(k);
+n = size(A,1); 
 
 i=[1 100 301 625;
     1 100 2000 3125];
 
 for p=1:size(i,1)
-    A = generateVFHMatrix(k(p));
-n = size(A,1); 
-for q=1:size(i,2)
+for k=1:size(i,2)
 
-u=zeros(n,1);u(i(p,q))=1;
+u=zeros(n,1);u(i(k))=1;
 
 f = @(x) 1./x;
 tic;
@@ -56,7 +56,7 @@ t_Algo=toc;
 tic;
 re=u'*inv(A)*u;
 t_inv=toc;
-fprintf('Vicsek fractal Hamiltonian (VFH) matrix n = %d, i = %d :\n',n,i(p,q))
+fprintf('Vicsek fractal Hamiltonian (VFH) matrix n = 625, i = %d :\n',i(k))
 fprintf('Inverse Method = %e, L = %e, U = %e,  Number of Iterations = %d, Time Algorithm = %f, Time Inverse Method = %f, U-L = %e\n', re, L, U, nbrIter, t_Algo, t_inv,U-L);
 end
 end
