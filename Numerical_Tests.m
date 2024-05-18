@@ -51,8 +51,6 @@ tic;
 [L,U,nbrIter]=Algorithm1(A,u,f,tol,maxiter);
 t_Algo=toc;
 
-
-
 tic;
 re=u'*(A^-1)*u;
 t_inv=toc;
