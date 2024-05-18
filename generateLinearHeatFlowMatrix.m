@@ -1,8 +1,4 @@
-function LHF = generateLinearHeatFlowMatrix()
-% Parameters
-k = 30; % Number of intervals in one dimension
-n = k^2; % Total size of the matrix A
-v = 0.2; % Example value for v, which is Delta t / h^2
+function LHF = generateLinearHeatFlowMatrix(k,v)
 
 % Constructing the tridiagonal matrix D
 e = ones(k, 1);
@@ -12,7 +8,7 @@ D = spdiags([-v*e, (1 + 4*v)*e, -v*e], -1:1, k, k);
 C = -v * speye(k);
 
 % Constructing the block tridiagonal matrix A
-LHF = sparse(n, n);
+LHF = sparse(k^2, k^2);
 
 % Fill the block tridiagonal matrix A
 for i = 1:k

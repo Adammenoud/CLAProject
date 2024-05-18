@@ -12,7 +12,10 @@ u=zeros(n,1);u(22)=1;
 
 f = @(x) 1./x;
 
-[L,U]=Algorithm1(A,u,f);
+tol=1e-9;
+maxiter=10;
+
+[L,U]=Algorithm1(A,u,f,tol,maxiter);
 
 
 % What is the output?! how L=U in the paper?!?!

@@ -9,12 +9,15 @@
 %A=randn(n);
 %A=A'*A;
 
-A = Linear_heat_flow_matrix();
+A = generateLinearHeatFlowMatrix();
 
 f = @(x) 1./x;
+tol=1e-9;
+maxiter=10;
 m=30;
+p=0.05;
 tic
-[Ip,Lp,Up] = Algorithm2(A,f,m);
+[Ip,Lp,Up] = Algorithm2(A,f,m,p,tol,maxiter);
 toc
 
 interval= Lp<Ip && Ip<Up;

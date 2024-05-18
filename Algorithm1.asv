@@ -59,14 +59,10 @@ warning('on', 'MATLAB:nearlySingularMatrix');
     IB(j) = sum(omega.^2*f(theta));
 
    % 8
-   Utemp=norm(u)^2*IA(j);
-   Ltemp=norm(u)^2*IB(j);
-   
-   U=max(Utemp,Ltemp);
-   L=min(Utemp,Ltemp);
+   U=norm(u)^2*IA(j);
+   L=norm(u)^2*IB(j);
 
-   % Stopping criterion
-   if( abs(IA(j-1)-IA(j))/abs(IA(j))<tol && abs(IB(j-1)-IB(j))/abs(IB(j))<tol)
+   if(abs(U-L)<tol && j>3)
        %disp('yey')
        iter=j-2;
        break
