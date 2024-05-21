@@ -1,3 +1,4 @@
+%Peut-etre faux?!?!
 function Hk = generateVFHMatrix(k)
     % Base case for the recursion
     H1 = [-4 1 1 1 1; 
@@ -17,13 +18,11 @@ function Hk = generateVFHMatrix(k)
     
     % Calculate positions for interaction matrices
     P1_1 = 3; P2_1 = 2; P3_1 = 5; P4_1 = 4;
-    P1 = P1_1; P2 = P2_1; P3 = P3_1; P4 = P4_1;
-    for i = 2:k
-        P1 = 5^(i-2) * (P1_1 - 1) + P1;
-        P2 = 5^(i-2) * (P2_1 - 1) + P2;
-        P3 = 5^(i-2) * (P3_1 - 1) + P3;
-        P4 = 5^(i-2) * (P4_1 - 1) + P4;
-    end
+
+    P1 = calculateP(P1_1,k);
+    P2 = calculateP(P2_1,k);
+    P3 = calculateP(P3_1,k);
+    P4 = calculateP(P4_1,k);
     
     % Create interaction matrices
     V1 = sparse(nk_1, nk_1); V1(P1, P2) = 1;
@@ -44,12 +43,29 @@ function Hk = generateVFHMatrix(k)
     Hk(nk_1+1:2*nk_1, 1:nk_1) = V1';
     
     Hk(1:nk_1, 2*nk_1+1:3*nk_1) = V2;
-    Hk(2*nk_1+1:3*nk_1, nk_1+1:2*nk_1) = V2';
+    Hk(2*nk_1+1:3*nk_1, 1:nk_1) = V2';
     
-    Hk(2*nk_1+1:3*nk_1, 3*nk_1+1:4*nk_1) = V3;
-    Hk(3*nk_1+1:4*nk_1, 2*nk_1+1:3*nk_1) = V3';
+    Hk(1:nk_1, 3*nk_1+1:4*nk_1) = V3;
+    Hk(3*nk_1+1:4*nk_1, 1:nk_1) = V3';
     
-    Hk(3*nk_1+1:4*nk_1, 4*nk_1+1:5*nk_1) = V4;
-    Hk(4*nk_1+1:5*nk_1, 3*nk_1+1:4*nk_1) = V4';
+    Hk(1:nk_1, 4*nk_1+1:5*nk_1) = V4;
+    Hk(4*nk_1+1:5*nk_1, 1:nk_1) = V4';
 end
 
+
+
+function P = calculateP(P_init,k)
+
+if k-1==1
+    P = P_init;
+elseif k-1>1
+
+    P = 5^(k-2)*(P_init-1) + calculateP(P_init,k-1);
+
+else
+
+    P=-1;
+
+end
+
+end

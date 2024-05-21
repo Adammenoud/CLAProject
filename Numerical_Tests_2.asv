@@ -1,11 +1,10 @@
-
 f = @(x) 1./x;
 tol=1e-4;
 maxiter=100;
 m=50;
 p=0.95;
 
-for i=1:1
+for i=1:4
 
     if i==1
         A = generatePoissonMatrix(30);
@@ -23,7 +22,7 @@ for i=1:1
 
 
 tic;
-[Ip,Lp,Up] = Algorithm2(A,f,m,p,tol,maxiter);
+[Ip,Lp,Up,itmin,itmax] = Algorithm2(A,f,m,p,tol,maxiter);
 t_Algo2=toc;
 
 %interval= Lp(end)<Ip(end) && Ip(end)<Up(end);
@@ -39,9 +38,10 @@ t_nsystems=toc;
 tic;
 [~] =nAlgo1(A,f,tol,maxiter);
 t_nalgo1=toc;
-
-disp(['For the' nameofmatrix ' : '])
+reer=round(abs((Ip(end)-re)/re),2)
+disp(['For the ' nameofmatrix ' : '])
 fprintf('Algorithm 2 : %f, Trace of Inverse : %f, Solving n Systems : %f, Using Algorithm 1 n times : %f\n',t_Algo2,t_direct,t_nsystems,t_nalgo1)
+fprintf('n = %d, "Exact" = %e, Iter = %d - %d, Estimated = %e, Rel. err = ',size(A,1),re,itmin,itmax,Ip(end), )
 
 
 PlotGraph(m,Ip,Lp,Up,re,nameofmatrix)

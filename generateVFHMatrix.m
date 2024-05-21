@@ -39,17 +39,17 @@ function Hk = generateVFHMatrix(k)
     Hk(4*nk_1+1:5*nk_1, 4*nk_1+1:5*nk_1) = Hk_1;
 
     % Insert interaction blocks
-    Hk(1:nk_1, nk_1+1:2*nk_1) = V1;
-    Hk(nk_1+1:2*nk_1, 1:nk_1) = V1';
+    Hk(1:nk_1, nk_1+1:2*nk_1) = V1';
+    Hk(nk_1+1:2*nk_1, 1:nk_1) = V1;
     
-    Hk(1:nk_1, 2*nk_1+1:3*nk_1) = V2;
-    Hk(2*nk_1+1:3*nk_1, 1:nk_1) = V2';
+    Hk(1:nk_1, 2*nk_1+1:3*nk_1) = V2';
+    Hk(2*nk_1+1:3*nk_1, 1:nk_1) = V2;
     
-    Hk(1:nk_1, 3*nk_1+1:4*nk_1) = V3;
-    Hk(3*nk_1+1:4*nk_1, 1:nk_1) = V3';
+    Hk(1:nk_1, 3*nk_1+1:4*nk_1) = V3';
+    Hk(3*nk_1+1:4*nk_1, 1:nk_1) = V3;
     
-    Hk(1:nk_1, 4*nk_1+1:5*nk_1) = V4;
-    Hk(4*nk_1+1:5*nk_1, 1:nk_1) = V4';
+    Hk(1:nk_1, 4*nk_1+1:5*nk_1) = V4';
+    Hk(4*nk_1+1:5*nk_1, 1:nk_1) = V4;
 end
 
 

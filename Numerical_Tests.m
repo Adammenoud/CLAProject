@@ -2,7 +2,7 @@ tol=1e-4;
 maxiter=200;
 
 Ex1=false;
-Ex2=false;
+Ex2=true;
 
 %Test Example 1
 if Ex1

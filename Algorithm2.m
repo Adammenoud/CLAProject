@@ -1,14 +1,21 @@
-function [Ip,Lp,Up] = Algorithm2(A,f,m,p,tol,maxiter)
+function [Ip,Lp,Up,itmin,itmax] = Algorithm2(A,f,m,p,tol,maxiter)
 
 n=size(A,1);
 Ip=zeros(1,m);L=zeros(1,m);U=zeros(1,m);Lp=zeros(1,m);Up=zeros(1,m);
 Lmin=Inf;
 Umax=-Inf;
 Z=2*binornd(1, 0.5, n, m)-1;
-
+itmin=Inf;itmax=-Inf;
 for j=1:m
 
-    [L(j),U(j),~]=Algorithm1(A,Z(:,j),f,tol,maxiter);
+    [L(j),U(j),it]=Algorithm1(A,Z(:,j),f,tol,maxiter);
+    
+    if it<itmin
+        itmin=it;
+    end
+    if it>itmax
+        itmax=it;
+    end
 
     Ip(j)=(sum(L+U))/(2*j);
 

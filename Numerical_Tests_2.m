@@ -22,7 +22,7 @@ for i=1:4
 
 
 tic;
-[Ip,Lp,Up] = Algorithm2(A,f,m,p,tol,maxiter);
+[Ip,Lp,Up,itmin,itmax] = Algorithm2(A,f,m,p,tol,maxiter);
 t_Algo2=toc;
 
 %interval= Lp(end)<Ip(end) && Ip(end)<Up(end);
@@ -38,9 +38,10 @@ t_nsystems=toc;
 tic;
 [~] =nAlgo1(A,f,tol,maxiter);
 t_nalgo1=toc;
-
+reer=abs((Ip(end)-re)/re);
 disp(['For the ' nameofmatrix ' : '])
 fprintf('Algorithm 2 : %f, Trace of Inverse : %f, Solving n Systems : %f, Using Algorithm 1 n times : %f\n',t_Algo2,t_direct,t_nsystems,t_nalgo1)
+fprintf('n = %d, "Exact" = %.3e, Iter = %d - %d, Estimated = %.3e, Rel. err = %f, Confidence Bounds = (%e , %e)\n',size(A,1),re,itmin,itmax,Ip(end), reer, Lp(end),Up(end))
 
 
 PlotGraph(m,Ip,Lp,Up,re,nameofmatrix)
