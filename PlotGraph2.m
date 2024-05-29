@@ -13,4 +13,5 @@ ylabel('Execution Time');
 legend('Algorithm 2', 'trace(inv(A))', 'Solve n systems', 'Algorithm 1 n times');
 
 title(nameofmatrix);
+saveas(gcf, fullfile('Plots', [nameofmatrix '_Tol.png']), 'png');
 end

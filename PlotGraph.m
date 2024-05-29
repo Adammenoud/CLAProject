@@ -26,5 +26,6 @@ legend('Estimation', 'Lower Bound', 'Upper Bound', '"Exact" Value');
 title(nameofmatrix);
 
 hold off;
+saveas(gcf, fullfile('Plots', [nameofmatrix '_MC.png']), 'png');
 
 end
