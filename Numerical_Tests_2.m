@@ -10,7 +10,7 @@ for i=1:4
         A = generatePoissonMatrix(30);
         nameofmatrix='Poisson Matrix';
     elseif i==2
-        A = generateVFHMatrix(4);
+        A = generateNegVFHMatrix(4);
         nameofmatrix='VHF Matrix';
     elseif i==3
         A = generateWathenMatrix(12, 12);

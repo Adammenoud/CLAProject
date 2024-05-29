@@ -42,7 +42,7 @@ i=[1 100 301 625;
     1 100 2000 3125];
 
 for p=1:size(i,1)
-    A = generateVFHMatrix(k(p));
+    A = generateNegVFHMatrix(k(p));
 n = size(A,1); 
 for q=1:size(i,2)
 
