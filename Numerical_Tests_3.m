@@ -1,5 +1,5 @@
 f = @(x) 1./x;
-tol=linspace(1e-4,1e-6,10);
+tol=10.^-(1:7);
 maxiter=100;
 m=50;
 p=0.95;
