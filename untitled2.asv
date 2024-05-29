@@ -1,0 +1,13 @@
+figure
+colors=lines(4);
+plot(tol,t_Algo2,Color=colors(:,1),Linew)
+hold on
+plot(tol,t_direct*ones(1,length(tol)))
+plot(tol,t_nsystems*ones(1,length(tol)))
+plot(tol,t_nalgo1)
+
+xlabel('Tolerance');
+ylabel('Execution Time');
+legend('Algorithm 2', 'trace(inv(A))', 'Solve n systems', 'Algorithm 1 n times');
+
+title(nameofmatrix);
